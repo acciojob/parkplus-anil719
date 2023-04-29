@@ -34,7 +34,7 @@ public class ReservationServiceImpl implements ReservationService {
         List<Spot> spotList = parkingLot.getSpotList();
         List<Spot> available = new ArrayList<>();
         for(Spot s : spotList){
-            if(!s.isOccupied() && s.getPricePerHour() == timeInHours) available.add(s);
+            if(!s.getOccupied() && s.getPricePerHour() == timeInHours) available.add(s);
         }
         if(available.isEmpty()) throw new Exception("Cannot make reservation") ;
 
