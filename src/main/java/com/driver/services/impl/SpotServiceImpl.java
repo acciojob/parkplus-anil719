@@ -50,8 +50,7 @@ public class SpotServiceImpl implements SpotService {
 
     @Override
     public void deleteSpot(int spotId) {
-        Spot spot = spotRepository.findById(spotId).get();
-        spotRepository.delete(spot);
+        spotRepository.deleteById(spotId) ;
     }
 
     @Override
