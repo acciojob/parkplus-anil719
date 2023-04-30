@@ -58,9 +58,15 @@ public class SpotServiceImpl implements SpotService {
 
         ParkingLot parkingLot = parkingLotRepository.findById(parkingLotId).get();
 
-        Spot spot = parkingLot.getSpotList().get(spotId);
+        Spot spot = null;
+        List<Spot> spotList = parkingLot.getSpotList();
+        for(Spot spot1 : spotList){
+            if(spot1.getId() == spotId){
+                spot = spot1;
+            }
+        }
         spot.setPricePerHour(pricePerHour);
-        Spot saved = spotRepository.save(spot);
-        return saved;
+        spotRepository.save(spot);
+        return spot;
     }
 }
