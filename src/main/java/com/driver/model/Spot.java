@@ -27,7 +27,7 @@ public class Spot {
 
 
     @OneToMany(mappedBy = "spot", cascade = CascadeType.ALL)
-    List<Reservation> reservationList = new ArrayList<>();
+    List<Reservation> reservationList ;
 
     public Spot() {
     }

@@ -9,6 +9,9 @@ import com.driver.services.SpotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class SpotServiceImpl implements SpotService {
     @Autowired
@@ -26,11 +29,23 @@ public class SpotServiceImpl implements SpotService {
         else if(numberOfWheels == 4) spot.setSpotType(SpotType.FOUR_WHEELER);
         else spot.setSpotType(SpotType.OTHERS);
         spot.setPricePerHour(pricePerHour);
-        spot.setOccupied(true);
-
+        spot.setOccupied(false);
         spot.setParkingLot(parkingLot);
 
-        return spotRepository.save(spot);
+
+        spot.setReservationList(new ArrayList<>());
+
+        List<Spot> spotList = parkingLot.getSpotList();
+        if (spotList == null) {
+            spotList = new ArrayList<>();
+        }
+        spotList.add(spot);
+        // set spot in parking lot
+        parkingLot.setSpotList(spotList);
+        // save parking lot
+        parkingLotRepository.save(parkingLot);
+        // spotRepository1.save(spot);
+        return spot;
     }
 
     @Override

@@ -20,7 +20,7 @@ public class ParkingLot {
 
 
     @OneToMany(mappedBy = "parkingLot", cascade = CascadeType.ALL)
-    List<Spot> spotList = new ArrayList<>();
+    List<Spot> spotList ;
 
     public ParkingLot() {
     }

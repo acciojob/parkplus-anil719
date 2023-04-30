@@ -38,12 +38,12 @@ public class ReservationServiceImpl implements ReservationService {
             List<Spot> spotList = parkingLot.getSpotList();
 
             if(user == null && parkingLot == null){
-                reservation.setSpot(null);
-                reservationRepository3.save(reservation);
+               // reservation.setSpot(null);
+                //reservationRepository3.save(reservation);
                 throw new Exception("Cannot make reservation");
             }
 
-            //find spot with minimum price                              //spot can be reserved if SpotType having wheels equals or greater than paased wheels
+            //find spot with minimum price                              //spot can be reserved if SpotType having wheels equals or greater than passed wheels
             Spot spotRequired = null;                                   //price also we should have minimum one
             int minPrice = Integer.MAX_VALUE;
             for(Spot spot : spotList){
@@ -55,8 +55,8 @@ public class ReservationServiceImpl implements ReservationService {
                 }
             }
             if(spotRequired == null){
-                reservation.setSpot(null);
-                reservationRepository3.save(reservation);
+//                reservation.setSpot(null);
+//                reservationRepository3.save(reservation);
                 throw new Exception("Cannot make reservation");
             }
 
