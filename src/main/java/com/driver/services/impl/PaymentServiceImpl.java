@@ -24,7 +24,10 @@ public class PaymentServiceImpl implements PaymentService {
         //Note that the reservationId always exists
         Reservation reservation = reservationRepository2.findById(reservationId).get();
         Payment payment = new Payment();
-        if(amountSent < reservation.getSpot().getPricePerHour()){
+        int price = reservation.getSpot().getPricePerHour();
+        int bill = reservation.getNumberOfHours()* price;
+
+        if(amountSent < bill){
             payment.setPaymentCompleted(false);
             paymentRepository2.save(payment);
             throw new Exception("Insufficient Amount");
@@ -37,6 +40,8 @@ public class PaymentServiceImpl implements PaymentService {
         }
         payment.setPaymentCompleted(true);
         payment.setReservation(reservation);
+        reservation.setPayment(payment);
+        reservationRepository2.save(reservation);
         return paymentRepository2.save(payment);
     }
 }
