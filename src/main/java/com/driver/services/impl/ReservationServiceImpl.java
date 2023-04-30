@@ -59,9 +59,7 @@ public class ReservationServiceImpl implements ReservationService {
 //                reservationRepository3.save(reservation);
                 throw new Exception("Cannot make reservation");
             }
-
-
-
+            git
             //this part specifies that user, parkingLot, parkingSpot are valid & available
             reservation.setNumberOfHours(timeInHours);
             reservation.setUser(user);
