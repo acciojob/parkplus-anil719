@@ -17,7 +17,7 @@ public class ParkingLotController {
     //findById and deleteById should be used wherever necessary
     //findAll should never be used
     @Autowired
-    ParkingLotServiceImpl parkingLotService;
+    ParkingLotService parkingLotService;
 
     @Autowired
     SpotService spotService;

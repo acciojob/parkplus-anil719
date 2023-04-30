@@ -1,6 +1,7 @@
 package com.driver.controllers;
 
 import com.driver.model.Reservation;
+import com.driver.services.ReservationService;
 import com.driver.services.impl.ReservationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/reservation")
 public class ReservationController {
     @Autowired
-    ReservationServiceImpl reservationService;
+    ReservationService reservationService;
     @PostMapping("/reserveSpot")
     public Reservation reserveSpot(@RequestParam Integer userId, @RequestParam Integer parkingLotId, @RequestParam Integer timeInHours, @RequestParam Integer numberOfWheels) throws Exception{
         //Reserve a spot in the given parkingLot such that the total price is minimum. Note that the price per hour for each spot is different
