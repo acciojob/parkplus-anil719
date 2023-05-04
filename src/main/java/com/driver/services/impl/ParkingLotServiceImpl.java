@@ -28,7 +28,7 @@ public class ParkingLotServiceImpl implements ParkingLotService {
         ParkingLot parkingLot = new ParkingLot();
         parkingLot.setName(name);
         parkingLot.setAddress(address);
-
+        parkingLot.setSpotList(new ArrayList<>());
         return parkingLotRepository1.save(parkingLot);
     }
 
@@ -43,8 +43,6 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     public void deleteSpot(int spotId) {
         spotService.deleteSpot(spotId);
     }
-
-
 
 
     @Override
